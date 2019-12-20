@@ -3,7 +3,6 @@ module.exports = function (sequelize, DataTypes) {
     user_name: DataTypes.STRING,
     user_email: DataTypes.STRING,
     date_created: DataTypes.DATE,
-    user_img: DataTypes.TEXT
   });
 
   User.associate = function (models) {
