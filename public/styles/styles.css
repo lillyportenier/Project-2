@@ -1,3 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+#ex {
+  background-color: green;
+  border-radius: 25px;
+}
+#submit {
+  box-shadow: 2px 2px 5px red;
+}

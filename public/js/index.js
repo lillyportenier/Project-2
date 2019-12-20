@@ -1,6 +1,6 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $exampleText = $("#input_text");
+var $exampleDescription = $("#textarea2");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -45,11 +45,11 @@ var refreshExamples = function() {
         })
         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+      // var $button = $("<button>")
+      //   .addClass("btn btn-danger float-right delete")
+      //   .text("ｘ");
 
-      $li.append($button);
+      // $li.append($button);
 
       return $li;
     });
@@ -97,3 +97,17 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function(){
+  $('.modal').modal();
+});
+        

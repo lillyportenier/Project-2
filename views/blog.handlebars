@@ -1,0 +1,41 @@
+<h1>{{msg}}</h1>
+<h3 id="ex">Alien Awareness</h3>
+
+<button data-target="modal1" class="btn modal-trigger">Modal</button>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="input_text" type="text">
+            <label for="input_text">Input text</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea"></textarea>
+            <label for="textarea2">Textarea</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Add to the cause</a>
+    </div>
+</div>
+<ul id="example-list" class="list-group">
+    {{#each examples}}
+    <li data-id="{{this.id}}" class="list-group-item">
+        <p>{{this.text}}</p>
+        <p>{{this.description}}</p>
+        {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
+    </li>
+    {{/each}}
+</ul>
+<script src="/js/index.js"></script>
