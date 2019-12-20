@@ -29,11 +29,11 @@
         <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Add to the cause</a>
     </div>
 </div>
-<ul id="example-list" class="list-group">
-    {{#each examples}}
+<ul id="post-list" class="list-group">
+    {{#each Post}}
     <li data-id="{{this.id}}" class="list-group-item">
-        <p>{{this.text}}</p>
-        <p>{{this.description}}</p>
+        <p>{{this.title}}</p>
+        <p>{{this.body}}</p>
         {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
     </li>
     {{/each}}
