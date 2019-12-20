@@ -12,10 +12,44 @@
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    user_name: DataTypes.STRING,
-    user_email: DataTypes.STRING,
-    date_created: DataTypes.DATE,
-    user_img: DataTypes.TEXT
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isUsername: true
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  });
+  var Post = sequelize.define("Post", {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
+    },
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1]
+    },
+    date: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+  });
+  var Location = sequelize.define("Location", {
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   });
 
   User.associate = function (models) {
