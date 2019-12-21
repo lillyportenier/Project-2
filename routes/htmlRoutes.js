@@ -6,7 +6,7 @@ module.exports = function(app) {
     db.Post.findAll({}).then(function(dbPosts) {
       res.render("index", {
         msg: "Welcome! This is the Alien Blog",
-        Posts: dbPosts
+        Post: dbPosts
       });
     });
   });
@@ -14,7 +14,7 @@ module.exports = function(app) {
     db.Post.findAll({}).then(function(dbPosts) {
       res.render("blog", {
         msg: "Welcome! This is the Alien Blog",
-        Posts: dbPosts
+        Post: dbPosts
       });
     });
   });
