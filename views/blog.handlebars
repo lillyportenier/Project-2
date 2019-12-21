@@ -7,7 +7,7 @@
     <i class="large material-icons">mode_edit</i>
   </a> --}}
   <a class="btn-floating green"><i class="btn modal-trigger" data-target="modal1">A</i></a>
-  <label for="btn">Add to Blog</label>
+  <label id="bFlag" for="btn">Add to Blog</label>
 </div>
       
 <!-- Modal Structure -->
@@ -36,7 +36,8 @@
         <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Add to the cause</a>
     </div>
 </div>
-<ul id="post-list" class="list-group">
+<br>
+{{!-- <ul id="post-list" class="list-group"> --}}
     {{#each Post}}
     <li data-id="{{this.id}}" class="list-group">
         <p>{{this.title}}</p>
@@ -44,5 +45,5 @@
         {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
     </li>
     {{/each}}
-</ul>
+{{!-- </ul> --}}
 <script src="/js/index.js"></script>
