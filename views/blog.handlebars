@@ -1,0 +1,48 @@
+<h1>{{msg}}</h1>
+<h3 id="ex">Alien Awareness</h3>
+
+{{!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> --}}
+<div class="fixed-action-btn">
+  {{!-- <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a> --}}
+  <a class="btn-floating green"><i class="btn modal-trigger" data-target="modal1">A</i></a>
+  <label for="btn">Add to Blog</label>
+</div>
+      
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Alien Blog</h4>
+        <p>Tell us what happened</p>
+    </div>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="title" type="text">
+            <label for="title">Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="blog" class="materialize-textarea"></textarea>
+            <label for="blog">Spill it</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Add to the cause</a>
+    </div>
+</div>
+<ul id="post-list" class="list-group">
+    {{#each Post}}
+    <li data-id="{{this.id}}" class="list-group-item">
+        <p>{{this.title}}</p>
+        <p>{{this.body}}</p>
+        {{!-- <button class="btn btn-danger float-right delete">ｘ</button> --}}
+    </li>
+    {{/each}}
+</ul>
+<script src="/js/index.js"></script>

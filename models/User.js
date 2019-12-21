@@ -1,4 +1,4 @@
-// var bcrypt = require("bcryptjs");
+var bcrypt = require("bcryptjs");
 
 // module.exports = function (sequelize, DataTypes) {
 //   var User = sequelize.define("User", {
@@ -25,7 +25,6 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   });
-  return User;
 
   // module.exports = function(connection, Sequelize){
   //   var table = connection.define('table', {
@@ -101,18 +100,15 @@ module.exports = function (sequelize, DataTypes) {
   //       include: [Post.Location]
   //     }]
   //   });
-
+ User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  User.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  }
+  );
+  return User;
 }
-// User.prototype.validPassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-// User.addHook("beforeCreate", function (user) {
-//   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-// });
-
-
-
-
 
 
 

@@ -3,20 +3,28 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
+    db.Post.findAll({}).then(function(dbPosts) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbPost
+        msg: "Welcome! This is the Alien Blog",
+        Posts: dbPosts
       });
       console.log(dbPost)
     });
   });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/blog", function(req, res) {
+    db.Post.findAll({}).then(function(dbPosts) {
+      res.render("blog", {
+        msg: "Welcome! This is the Alien Blog",
+        Posts: dbPosts
+      });
+    });
+  });
+  
+  // Load Post page and pass in a Post by id
+  app.get("/post/:id", function(req, res) {
+    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPost) {
+      res.render("blog", {
+        Post: dbPost
       });
     });
   });

@@ -1,99 +1,104 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var postTitle = $("#title");
+var $postBody = $("#blog");
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $postBlog = $("#post-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  savePost: function(Post) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/post",
+      data: JSON.stringify(Post)
     });
   },
-  getExamples: function() {
+  getPost: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/post",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deletePost: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/post/" + id,
       type: "DELETE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+// refreshPost gets new Post from the db and repopulates the list
+var refreshPost = function() {
+  API.getPost().then(function(data) {
+    var $Post = data.map(function(Post) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(Post.title)
+        .attr("href", "/Post/" + Post.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": Post.id
         })
         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+      // var $button = $("<button>")
+      //   .addClass("btn btn-danger float-right delete")
+      //   .text("ｘ");
 
-      $li.append($button);
+      // $li.append($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $postBlog.append($Post);
+    $postBlog.empty();
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new Post
+// Save the new Post to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var Post = {
+    title: postTitle.val().trim(),
+    body: $postBody.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(Post.title && Post.body)) {
+    alert("You must enter a Post title and Blog!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.savePost(Post).then(function() {
+    refreshPost();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  postTitle.val("");
+  $postBody.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+// handleDeleteBtnClick is called when an Post's delete button is clicked
+// Remove the Post from the db and refresh the list
+// var handleDeleteBtnClick = function() {
+//   var idToDelete = $(this)
+//     .parent()
+//     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
+//   API.deletePost(idToDelete).then(function() {
+//     refreshPost();
+//   });
+// };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+// // Add event listeners to the submit and delete buttons
+// $submitBtn.on("click", handleFormSubmit);
+// $postBlog.on("click", ".delete", handleDeleteBtnClick);
+
+
+$(document).ready(function(){
+  $('.modal').modal();
+});
