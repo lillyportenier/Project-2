@@ -1,5 +1,9 @@
 body {
   font-family: fantasy;
+  background-color: black;
+  color: lightgoldenrodyellow;
+  text-shadow: 2px 2px 5px lightgreen;
+  box-shadow: 2px 2px 5px coral;
 }
 .list-group-item {
   line-height: 2.5;
