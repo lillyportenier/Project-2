@@ -1,6 +1,6 @@
 // Get references to page elements
-var postTitle = $("#input_text");
-var $postBody = $("#textarea2");
+var postTitle = $("#title");
+var $postBody = $("#blog");
 var $submitBtn = $("#submit");
 var $postBlog = $("#post-list");
 
@@ -36,7 +36,7 @@ var refreshPost = function() {
     var $Post = data.map(function(Post) {
       var $a = $("<a>")
         .text(Post.title)
-        .attr("href", "/post/" + Post.id);
+        .attr("href", "/Post/" + Post.id);
 
       var $li = $("<li>")
         .attr({
@@ -54,8 +54,8 @@ var refreshPost = function() {
       return $li;
     });
 
-    $postBlog.empty();
     $postBlog.append($Post);
+    $postBlog.empty();
   });
 };
 
@@ -70,7 +70,7 @@ var handleFormSubmit = function(event) {
   };
 
   if (!(Post.title && Post.body)) {
-    alert("You must enter an Post title and Blog!");
+    alert("You must enter a Post title and Blog!");
     return;
   }
 
@@ -84,22 +84,21 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an Post's delete button is clicked
 // Remove the Post from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+// var handleDeleteBtnClick = function() {
+//   var idToDelete = $(this)
+//     .parent()
+//     .attr("data-id");
 
-  API.deletePost(idToDelete).then(function() {
-    refreshPost();
-  });
-};
+//   API.deletePost(idToDelete).then(function() {
+//     refreshPost();
+//   });
+// };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$postBlog.on("click", ".delete", handleDeleteBtnClick);
+// // Add event listeners to the submit and delete buttons
+// $submitBtn.on("click", handleFormSubmit);
+// $postBlog.on("click", ".delete", handleDeleteBtnClick);
 
 
 $(document).ready(function(){
   $('.modal').modal();
 });
-        

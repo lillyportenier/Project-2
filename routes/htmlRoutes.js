@@ -19,10 +19,10 @@ module.exports = function(app) {
     });
   });
   
-  // Load Post page and pass in an Post by id
+  // Load Post page and pass in a Post by id
   app.get("/post/:id", function(req, res) {
     db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPost) {
-      res.render("Post", {
+      res.render("blog", {
         Post: dbPost
       });
     });

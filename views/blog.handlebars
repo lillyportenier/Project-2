@@ -1,26 +1,33 @@
 <h1>{{msg}}</h1>
 <h3 id="ex">Alien Awareness</h3>
 
-<button data-target="modal1" class="btn modal-trigger">Modal</button>
-
+{{!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> --}}
+<div class="fixed-action-btn">
+  {{!-- <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a> --}}
+  <a class="btn-floating green"><i class="btn modal-trigger" data-target="modal1">A</i></a>
+  <label for="btn">Add to Blog</label>
+</div>
+      
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h4>Alien Blog</h4>
+        <p>Tell us what happened</p>
     </div>
     <div class="row">
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6">
-            <input id="input_text" type="text">
-            <label for="input_text">Input text</label>
+            <input id="title" type="text">
+            <label for="title">Title</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea2" class="materialize-textarea"></textarea>
-            <label for="textarea2">Textarea</label>
+            <textarea id="blog" class="materialize-textarea"></textarea>
+            <label for="blog">Spill it</label>
           </div>
         </div>
       </form>
