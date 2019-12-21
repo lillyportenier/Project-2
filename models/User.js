@@ -6,6 +6,11 @@ var bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
+  //   userId: {
+  //     type: DataTypes.INTEGER,
+  //     autoIncrement: true,
+  //     primaryKey: true
+  // },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,35 +25,10 @@ module.exports = function (sequelize, DataTypes) {
     }
 
   });
-  var Post = sequelize.define("Post", {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
-    },
-    date: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-  });
-  var Location = sequelize.define("Location", {
-    city: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: true
-    }
-  });
 
-  User.Post = Post.belongsTo(User);
-  Post.Location = Post.hasOne(Location);
+  // User.associate = function(models){
+  //   User.hasMany(models.Post, {as: "posts"})
+  // };
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
@@ -57,26 +37,26 @@ module.exports = function (sequelize, DataTypes) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   }
   );
-  return User.create({
-    username: "UFO-GOD",
-    password: "iloveufos",
+  // return User.create({
+  //   username: "UFO-GOD",
+  //   password: "iloveufos",
 
-    Post: {
-      title: "Circle Lights",
-      body: "Bright shifting lights seen over Buckley Air Force Base",
-      date: "12/16/19",
-      Location: [{
-        city: "Centennial",
-        state: "CO",
-      }]
-    }
-  },{
-    include: [{
-      association: User.Post,
-      include: [Post.Location]
-      }]
-    });
-  // return User;
+  //   Post: {
+  //     title: "Circle Lights",
+  //     body: "Bright shifting lights seen over Buckley Air Force Base",
+  //     date: "12/16/19",
+  //     Location: [{
+  //       city: "Centennial",
+  //       state: "CO",
+  //     }]
+  //   }
+  // },{
+  //   include: [{
+  //     association: User.Post,
+  //     include: [Post.Location]
+  //     }]
+  //   });
+  return User;
   // return Post;
   // return Location;
 
