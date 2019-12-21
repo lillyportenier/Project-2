@@ -8,7 +8,6 @@ module.exports = function(app) {
         msg: "Welcome! This is the Alien Blog",
         Posts: dbPosts
       });
-      console.log(dbPost)
     });
   });
   app.get("/blog", function(req, res) {

@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 module.exports= {
 
@@ -21,5 +20,4 @@ module.exports= {
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
-
 }
