@@ -2,8 +2,11 @@ body {
   font-family: fantasy;
   background-color: black;
   color: lightgoldenrodyellow;
-  text-shadow: 2px 2px 5px lightgreen;
-  box-shadow: 2px 2px 5px coral;
+  text-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px red;
+}
+#bFlag {
+  text-shadow: 2px 2px 5px green;
 }
 .list-group-item {
   line-height: 2.5;
@@ -25,7 +28,11 @@ h1, h3 {
   color: whitesmoke;
   border-radius: 25px;
   background-color: green;
+  color: lightgoldenrodyellow;
+  text-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px lightgoldenrodyellow;
 }
-#modal1 {
+#modal1, #modal2 {
   border-radius: 25px;
+  background-color: darkslategrey;
 }

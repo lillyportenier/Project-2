@@ -1,11 +1,13 @@
 
 module.exports = function (sequelize, DataTypes) {
+
     var Post = sequelize.define("Post", {
         postId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
+
         title: {
           type: DataTypes.STRING,
           allowNull: false,

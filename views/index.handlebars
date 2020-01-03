@@ -10,8 +10,9 @@
 
         <div class="container">
           <form class="col s12">
-              <div class="row">
-                <input placeholder="UserName" id="username" type="text" class="validate">
+              <div class="input-field col s12">
+                <input id="username" type="text" class="validate">
+                <label for="username">UserName</label>
               </div>
                 <div class="input-field col s12">
                   <input id="password" type="password" class="validate">
@@ -21,4 +22,45 @@
         </div>
 
 
-        <script src="/js/index.js"></script>
+<div class="fixed-action-btn">
+ <a class="btn-floating green"><i class="btn modal-trigger" data-target="modal2">A</i></a>
+  <label id="bFlag" for="btn">Sign-up</label>
+  </div>
+
+    <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Sign-Up</h4>
+
+    </div>
+ <div class="row">
+    <form class="col s12" id="signup" >
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password-input" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email-input" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+        <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Join Us</a>
+  </div>
+  </div>
+
+        <script src="/js/signup.js"></script>
