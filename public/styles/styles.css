@@ -32,7 +32,7 @@ h1, h3 {
   text-shadow: 2px 2px 5px black;
   box-shadow: 2px 2px 5px lightgoldenrodyellow;
 }
-#modal1 {
+#modal1, #modal2 {
   border-radius: 25px;
   background-color: darkslategrey;
 }

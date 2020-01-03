@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    // Getting references to our form and input
-    var signUpForm = $("form.signup");
+
+    // Getting references to our form and input //This is his API  
+    var signUpForm = $("form#signup");
+
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
   
@@ -40,4 +42,8 @@ $(document).ready(function() {
       $("#alert").fadeIn(500);
     }
   });
-  
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+
