@@ -22,3 +22,17 @@ module.exports = function(app) {
     });
   });
 };
+
+// sign in
+// sign up in corner
+
+// all blog posts 
+
+
+// get request for search keyword city, state, date
+// add post route 
+// add user route 
+// delete post for users only 
+
+
+// update bnlog post extraaaa
