@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function(models){
-    User.hasMany(models.Post, {as: "posts"})
+    User.hasMany(models.Post, {foreignKey: "postId"})
   };
 
   User.prototype.validPassword = function (password) {
@@ -35,27 +35,8 @@ module.exports = function (sequelize, DataTypes) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   }
   );
-  // return User.create({
-  //   username: "UFO-GOD",
-  //   password: "iloveufos",
 
-  //   Post: {
-  //     title: "Circle Lights",
-  //     body: "Bright shifting lights seen over Buckley Air Force Base",
-  //     date: "12/16/19",
-  //     Location: [{
-  //       city: "Centennial",
-  //       state: "CO",
-  //     }]
-  //   }
-  // }
-  // ,{
-  //   include: [{
-  //     association: User.Post,
-  //     include: [Post.Location]
-  //     }]
-  //   }
-  //   );
+  
   return User;
 
 
