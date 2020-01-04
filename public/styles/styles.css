@@ -4,6 +4,7 @@ body {
   color: lightgoldenrodyellow;
   text-shadow: 2px 2px 5px black;
   box-shadow: 2px 2px 5px red;
+  background-image: url("/images/alienBackGround.jpg");
 }
 #bFlag {
   text-shadow: 2px 2px 5px green;
@@ -35,4 +36,15 @@ h1, h3 {
 #modal1, #modal2, #modal3 {
   border-radius: 25px;
   background-color: darkslategrey;
+}
+#username, #password {
+  color: white;
+}
+#search {
+  background-color: darkslategrey;
+  color: white;
+}
+img {
+  height: 1000px;
+  width: 1000px;
 }
