@@ -1,7 +1,7 @@
 // Get references to page elements
 var postTitle = $("#title");
 var $postBody = $("#blog");
-var $submitBtn = $("#submit");
+var $submitBtn = $("#submit2");
 var $postBlog = $("#post-list");
 
 // The API object contains methods for each kind of request we'll make
