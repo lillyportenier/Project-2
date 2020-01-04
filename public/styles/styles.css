@@ -36,3 +36,6 @@ h1, h3 {
   border-radius: 25px;
   background-color: darkslategrey;
 }
+#username, #password {
+  color: white;
+}
