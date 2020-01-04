@@ -20,6 +20,7 @@ module.exports = function(app) {
     //     Post: dbPosts
     //   });
     // });
+    
                     res.render("blog", {
                       msg: "Welcome! This is the Alien Blog",
                       Post: [

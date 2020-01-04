@@ -3,6 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all Posts
   app.get("/api/posts", function(req, res) {
+    var query = {};
+    if (req.query.userId) {
+      auery.
+    }
     db.Post.findAll({}).then(function(dbPosts) {
       res.json(dbPosts);
     });
@@ -21,6 +25,8 @@ module.exports = function(app) {
       res.json(dbPosts);
     });
   });
+
+  
 };
 
 
