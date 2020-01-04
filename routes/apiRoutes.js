@@ -1,17 +1,57 @@
 var db = require("../models");
 
+
 module.exports = function(app) {
   // Get all Posts
   app.get("/api/posts", function(req, res) {
-    var query = {};
-    if (req.query.userId) {
-      auery.
-    }
+    // var query = {};
+    // if (req.query.userId) {
+    
+    // }
     db.Post.findAll({}).then(function(dbPosts) {
       res.json(dbPosts);
     });
   });
-
+  app.get(("api/posts/:title", function(req, res) {
+    db.Post.findOne({
+      where: {
+        title: req.parmas.title
+      },
+      include: [db.Post]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  }));
+  app.get(("api/posts/:city", function(req, res) {
+    db.Location.findMany({
+      where: {
+        city: req.parmas.location 
+      },
+      include: [db.Post]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  }));
+  app.get(("api/posts/:state", function(req, res) {
+    db.Location.findMany({
+      where: {
+        state: req.parmas.state 
+      },
+      include: [db.Post]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  }));
+  app.get(("api/posts/:username", function(req, res) {
+    db.User.findMany({
+      where: {
+        username: req.parmas.username 
+      },
+      include: [db.Post]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  }));
   // Create a new Post
   app.post("/api/posts", function(req, res) {
     db.Post.create(req.body).then(function(dbPosts) {
