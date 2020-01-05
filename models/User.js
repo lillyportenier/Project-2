@@ -4,11 +4,11 @@
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-  //   userId: {
-  //     type: DataTypes.INTEGER,
-  //     autoIncrement: true,
-  //     primaryKey: true
-  // },
+    userId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+  },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function(models){
-    User.hasMany(models.Post, {foreignKey: "postId"})
+    User.hasMany(models.Post)
   };
 
   // User.prototype.validPassword = function (password) {

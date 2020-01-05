@@ -33,7 +33,7 @@ $(document).ready(function() {
     })
     .then(function(data) {
       console.log("created new blog");
-      // location.reload();
+      location.reload();
     })
     // .catch(handleBlogErr);
   }
