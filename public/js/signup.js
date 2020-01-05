@@ -10,7 +10,7 @@ console.log("loaded")
 
     // When the signup button is clicked, we validate the email and password are not blank
     signUpForm.on("submit", function() {
-      // event.preventDefault();
+      event.preventDefault();
       console.log(firstNameInput.val().trim())
       var userData = {
         firstName: firstNameInput.val().trim(),
@@ -60,4 +60,3 @@ console.log("loaded")
   $(document).ready(function(){
     $('.modal').modal();
   });
-
