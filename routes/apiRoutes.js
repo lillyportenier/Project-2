@@ -10,12 +10,25 @@ module.exports = function(app) {
       query.UserId = req.query.id;
     }
     db.Post.findAll({
-      where: query,
-      include: [db.User]
+      where: query
+      // ,
+      // include: [db.User]
     }).then(function(dbPosts) {
       res.json(dbPosts);
     });
   });
+  
+  app.post("/api/posts", function (req, res) {
+    db.Post.create({
+      title: req.body.title,
+      body: req.body.body,
+      city: req.body.city,
+      state: req.body.state
+    }).then(function (dbPosts) {
+      res.json(dbPosts);
+    });
+  });
+
 
   // Get all Posts
   app.get("/api/posts", function (req, res) {
@@ -112,7 +125,7 @@ app.post("/api/signup", function(req, res) {
     username: req.body.username,
     password: req.body.password
   })
-  .then(function(user) {
+.then(function(user) {                                                                                                                                                  
     console.log("user", user);
     res.json(user);
     // res.redirect(307, "/api/login");
