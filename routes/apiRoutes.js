@@ -42,31 +42,33 @@ module.exports = function(app) {
   });
 
   // searches by post city
-  app.get("/api/search-city/:city", function (req, res) {
+  app.get("/api/city/:city", function (req, res) {
     db.Location.findMany({
       where: {
         city: req.params.location
-      },
-      include: [db.Post]
+      }
+      // ,
+      // include: [db.Post]
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   // searches by post state 
-  app.get("/api/search-state/:state", function (req, res) {
+  app.get("/api/state/:state", function (req, res) {
     db.Location.findMany({
       where: {
         state: req.params.state
-      },
-      include: [db.Post]
+      }
+      // ,
+      // include: [db.Post]
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   // searches by username 
-  app.get("/api/search-username/:username", function (req, res) {
+  app.get("/api/username/:username", function (req, res) {
     console.log(db.Post.title, "post title")
     console.log(db.Post, "post")
 
