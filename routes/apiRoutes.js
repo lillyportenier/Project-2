@@ -50,19 +50,21 @@ module.exports = function (app) {
     });
   });
   // searc hes by post title
-  app.get("api/search-title/:title", function (req, res) {
+  app.get("/api/title/:title", function (req, res) {
+    console.log("into title search")
     db.Post.findOne({
       where: {
         title: req.params.title
-      },
-      include: [db.Post]
+      }
+      // ,
+      // include: [db.User]
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   // searches by post city
-  app.get("api/search-city/:city", function (req, res) {
+  app.get("/api/search-city/:city", function (req, res) {
     db.Location.findMany({
       where: {
         city: req.params.location
@@ -74,7 +76,7 @@ module.exports = function (app) {
   });
 
   // searches by post state 
-  app.get("api/search-state/:state", function (req, res) {
+  app.get("/api/search-state/:state", function (req, res) {
     db.Location.findMany({
       where: {
         state: req.params.state
@@ -87,6 +89,10 @@ module.exports = function (app) {
 
   // searches by username 
   app.get("/api/search-username/:username", function (req, res) {
+    console.log(db.Post.title, "post title")
+    console.log(db.Post, "post")
+
+
     db.User.findOne({
       where: {
         username: req.params.username
