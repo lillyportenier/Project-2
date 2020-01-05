@@ -1,72 +1,106 @@
+var passport = require("passport");
 var db = require("../models");
 
 
-module.exports = function(app) {
-  // Get all Posts
-  app.get("/api/posts", function(req, res) {
-    // var query = {};
-    // if (req.query.userId) {
-    
-    // }
-    db.Post.findAll({}).then(function(dbPosts) {
+module.exports = function (app) {
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    res.json(req.user);
+  });
+
+  // creates a new user 
+  app.post("/api/signup", function (req, res) {
+    console.log("into signup route")
+    console.log(User)
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password
+    }).then(function (dbPosts) {
+      console.log(res.dbPosts);
+      res.json(dbPosts);
+    })
+  });
+
+  // Create a new Post
+  app.post("/api/posts", function (req, res) {
+    db.Post.create({
+      title: req.body.title,
+      body: req.body.body,
+      city: req.body.city,
+      state: req.body.state
+    }).then(function (dbPosts) {
       res.json(dbPosts);
     });
   });
-  app.get(("api/posts/:title", function(req, res) {
+
+  // Get all Posts
+  app.get("/api/posts", function (req, res) {
+    // var query = {};
+    // if (req.query.userId) {
+
+    // }
+    db.Post.findAll({}).then(function (dbPosts) {
+      res.json(dbPosts);
+    });
+  });
+  // searc hes by post title
+  app.get("api/search-title/:title", function (req, res) {
     db.Post.findOne({
       where: {
-        title: req.parmas.title
+        title: req.params.title
       },
       include: [db.Post]
-    }).then(function(dbPost) {
+    }).then(function (dbPost) {
       res.json(dbPost);
     });
-  }));
-  app.get(("api/posts/:city", function(req, res) {
+  });
+
+  // searches by post city
+  app.get("api/search-city/:city", function (req, res) {
     db.Location.findMany({
       where: {
-        city: req.parmas.location 
+        city: req.params.location
       },
       include: [db.Post]
-    }).then(function(dbPost) {
+    }).then(function (dbPost) {
       res.json(dbPost);
     });
-  }));
-  app.get(("api/posts/:state", function(req, res) {
+  });
+
+  // searches by post state 
+  app.get("api/search-state/:state", function (req, res) {
     db.Location.findMany({
       where: {
-        state: req.parmas.state 
+        state: req.params.state
       },
       include: [db.Post]
-    }).then(function(dbPost) {
+    }).then(function (dbPost) {
       res.json(dbPost);
     });
-  }));
-  app.get(("api/posts/:username", function(req, res) {
-    db.User.findMany({
+  });
+
+  // searches by username 
+  app.get("/api/search-username/:username", function (req, res) {
+    db.User.findOne({
       where: {
-        username: req.parmas.username 
+        username: req.params.username
       },
       include: [db.Post]
-    }).then(function(dbPost) {
+    }).then(function (dbPost) {
       res.json(dbPost);
-    });
-  }));
-  // Create a new Post
-  app.post("/api/posts", function(req, res) {
-    db.Post.create(req.body).then(function(dbPosts) {
-      res.json(dbPosts);
     });
   });
 
   // Delete an Post by id
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Post.destroy({ where: { id: req.params.id } }).then(function(dbPosts) {
+  app.delete("/api/posts/:id", function (req, res) {
+    db.Post.destroy({ where: { id: req.params.id } }).then(function (dbPosts) {
       res.json(dbPosts);
     });
   });
 
-  
+
 };
 
 
@@ -84,21 +118,21 @@ module.exports = function(app) {
 //   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
 //   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 //   // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password
-    })
-      .then(function() {
-        res.redirect(307, "/api/login");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
-  });
+  // app.post("/api/signup", function(req, res) {
+  //   db.User.create({
+  //     firstName: req.body.firstName,
+  //     lastName: req.body.lastName,
+  //     email: req.body.email,
+  //     username: req.body.username,
+  //     password: req.body.password
+  //   })
+  //     .then(function() {
+  //       res.redirect(307, "/api/login");
+  //     })
+  //     .catch(function(err) {
+  //       res.status(401).json(err);
+  //     });
+  // });
 
 //   // Route for logging user out
 //   app.get("/logout", function(req, res) {

@@ -29,7 +29,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+console.log("getting to the routes in server js")
 require("./routes/apiRoutes")(app);
+console.log("got past last comment")
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: true };
