@@ -4,7 +4,7 @@ body {
   color: lightgoldenrodyellow;
   text-shadow: 2px 2px 5px black;
   box-shadow: 2px 2px 5px red;
-  background-image: url("/images/alienBackGround.jpg");
+  background-image: url("/images/kidssky.jpg");
 }
 #bFlag {
   text-shadow: 2px 2px 5px green;
@@ -12,9 +12,14 @@ body {
 .list-group-item {
   line-height: 2.5;
 }
-#submit {
+#submit, 
+#submit4, 
+#submit1, 
+#submit2, 
+#submit3 {
   box-shadow: 2px 2px 5px red;
   border-radius: 25px;
+  background-color: lightblue;
 }
 .container {
   position: relative;

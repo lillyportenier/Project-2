@@ -45,7 +45,7 @@ console.log("loaded")
       })
         .then(function(data) {
           console.log("loaded1")
-          // window.location.replace("/members");
+          window.location.replace("/blog");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
         .catch(handleLoginErr);
