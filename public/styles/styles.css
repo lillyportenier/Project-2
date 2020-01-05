@@ -8,8 +8,9 @@ body {
 }
 #bFlag {
   text-shadow: 2px 2px 5px green;
+  color:whitesmoke;
 }
-.list-group-item {
+.list-group {
   line-height: 2.5;
 }
 #submit, 
@@ -19,13 +20,14 @@ body {
 #submit3 {
   box-shadow: 2px 2px 5px red;
   border-radius: 25px;
-  background-color: lightblue;
+  background-color: darkgreen;
+  color: whitesmoke;
 }
 .container {
   position: relative;
 }
 .modal-trigger {
-  background-color: green;
+  background-color: lightgreen;
   height: 100px;
   text-align: center;
 }
@@ -53,3 +55,6 @@ img {
   height: 1000px;
   width: 1000px;
 }
+/* #post-list {
+  overflow: auto;
+} */
