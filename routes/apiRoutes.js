@@ -1,3 +1,4 @@
+var passport = require("passport");
 var db = require("../models");
 var passport = require("../config/passport");
 
@@ -16,16 +17,73 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new Post
-  app.post("/api/posts", function(req, res) {
-    db.Post.create(req.body).then(function(dbPosts) {
+  // Get all Posts
+  app.get("/api/posts", function (req, res) {
+    // var query = {};
+    // if (req.query.userId) {
+
+    // }
+    db.Post.findAll({}).then(function (dbPosts) {
       res.json(dbPosts);
+    });
+  });
+  // searc hes by post title
+  app.get("/api/title/:title", function (req, res) {
+    console.log("into title search")
+    db.Post.findOne({
+      where: {
+        title: req.params.title
+      }
+      // ,
+      // include: [db.User]
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // searches by post city
+  app.get("/api/search-city/:city", function (req, res) {
+    db.Location.findMany({
+      where: {
+        city: req.params.location
+      },
+      include: [db.Post]
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // searches by post state 
+  app.get("/api/search-state/:state", function (req, res) {
+    db.Location.findMany({
+      where: {
+        state: req.params.state
+      },
+      include: [db.Post]
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // searches by username 
+  app.get("/api/search-username/:username", function (req, res) {
+    console.log(db.Post.title, "post title")
+    console.log(db.Post, "post")
+
+
+    db.User.findOne({
+      where: {
+        username: req.params.username
+      },
+      include: [db.Post]
+    }).then(function (dbPost) {
+      res.json(dbPost);
     });
   });
 
   // Delete an Post by id
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Post.destroy({ where: { id: req.params.id } }).then(function(dbPosts) {
+  app.delete("/api/posts/:id", function (req, res) {
+    db.Post.destroy({ where: { id: req.params.id } }).then(function (dbPosts) {
       res.json(dbPosts);
     });
   });
