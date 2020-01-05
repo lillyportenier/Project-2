@@ -12,9 +12,9 @@ $(document).ready(function() {
         PassWord: PassWord.val().trim()
       };
   
-      if (!userData.UserName || !userData.PassWord) {
-        return;
-      }
+      // if (!userData.UserName || !userData.PassWord) {
+      //   return;
+      // }
   
       // If we have an email and password we run the loginUser function and clear the form
       loginUser(userData.UserName, userData.PassWord);
@@ -29,7 +29,7 @@ $(document).ready(function() {
         password: password
       })
         .then(function() {
-          window.location.replace("/members");
+          window.location.replace("/blog");
           // If there's an error, log the error
         })
         .catch(function(err) {
