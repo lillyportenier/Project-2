@@ -10,7 +10,7 @@ body {
   text-shadow: 2px 2px 5px green;
   color:whitesmoke;
 }
-.list-group-item {
+.list-group {
   line-height: 2.5;
 }
 #submit, 
@@ -55,6 +55,6 @@ img {
   height: 1000px;
   width: 1000px;
 }
-#post-list {
+/* #post-list {
   overflow: auto;
-}
+} */
