@@ -14,28 +14,27 @@ module.exports = function(app) {
     
   });
   app.get("/blog", function(req, res) {
-    // db.Post.findAll({}).then(function(dbPosts) {
-    //   res.render("blog", {
-    //     msg: "Welcome! This is the Alien Blog",
-    //     Post: dbPosts
-    //   });
-    // });
-    
-                    res.render("blog", {
-                      msg: "Welcome! This is the Alien Blog",
-                      Post: [
-                        {
-                        title: "dummy",
-                        id: 1,
-                        body: "fake body"
-                      },
-                        {
-                        title: "dumm2y",
-                        id: 2,
-                        body: "fake bod22y"
-                      },
-                    ]
-                    });
+    db.Post.findAll({}).then(function(dbPosts) {
+      res.render("blog", {
+        msg: "Welcome! This is the Alien Blog",
+        Post: dbPosts
+      });
+    });
+                    // res.render("blog", {
+                    //   msg: "Welcome! This is the Alien Blog",
+                    //   Post: [
+                    //     {
+                    //     title: "dummy",
+                    //     id: 1,
+                    //     body: "fake body"
+                    //   },
+                    //     {
+                    //     title: "dumm2y",
+                    //     id: 2,
+                    //     body: "fake bod22y"
+                    //   },
+                    // ]
+                    // });
   });
   
   // Load Post page and pass in a Post by id

@@ -13,15 +13,25 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false,
           len: [1]
         },
+        city: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          len: [1]
+        },
+        state: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          len: [1]
+        },
         body: {
           type: DataTypes.TEXT,
           allowNull: false,
           len: [1]
-        },
-        date: {
-          type: DataTypes.STRING,
-          allowNull: true,
-        },
+        }
+        // date: {
+        //   type: DataTypes.STRING,
+        //   allowNull: true,
+        // },
       });
 
     Post.associate = function (models) {

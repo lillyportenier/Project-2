@@ -1,14 +1,14 @@
 
 
-var bcrypt = require("bcryptjs");
+// var bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    userId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-  },
+  //   userId: {
+  //     type: DataTypes.INTEGER,
+  //     autoIncrement: true,
+  //     primaryKey: true
+  // },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true
     },
     password: {
       type: DataTypes.STRING,
@@ -41,13 +41,13 @@ module.exports = function (sequelize, DataTypes) {
     User.hasMany(models.Post, {foreignKey: "postId"})
   };
 
-  User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  User.addHook("beforeCreate", function (user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-  }
-  );
+  // User.prototype.validPassword = function (password) {
+  //   return bcrypt.compareSync(password, this.password);
+  // };
+  // User.addHook("beforeCreate", function (user) {
+  //   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  // }
+  // );
 
   
   return User;

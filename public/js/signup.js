@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+console.log("loaded")
     // Getting references to our form and input //This is his API  
     var signUpForm = $("#signup-form");
     var firstNameInput = $("#first_name");
@@ -7,10 +7,11 @@ $(document).ready(function() {
     var emailInput = $("#email-input");
     var userNameInput = $("#username-input");
     var passwordInput = $("#password-input");
-  
+
     // When the signup button is clicked, we validate the email and password are not blank
     signUpForm.on("submit", function() {
       // event.preventDefault();
+      console.log(firstNameInput.val().trim())
       var userData = {
         firstName: firstNameInput.val().trim(),
         lastName: lastNameInput.val().trim(),
@@ -20,9 +21,9 @@ $(document).ready(function() {
       };
       
       console.log("event********************", userData);
-      if (!userData.firstName || !userData.lastName || !userData.email || !userData.username || !userData.password) {
-        return;
-      }
+      // if (!userData.firstName || !userData.lastName || !userData.email || !userData.username || !userData.password) {
+      //   return;
+      // }
       // If we have an email and password, run the signUpUser function
       signUpUser(userData.firstName, userData.lastName, userData.email, userData.username, userData.password);
       firstNameInput.val("");
@@ -44,7 +45,8 @@ $(document).ready(function() {
         password: password
       })
         .then(function(data) {
-          window.location.replace("/members");
+          console.log("loaded1")
+          window.location.replace("/blog");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
         .catch(handleLoginErr);
