@@ -3,7 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all Posts
   app.get("/api/posts", function(req, res) {
-    db.Post.findAll({}).then(function(dbPosts) {
+    var query = {};
+    if (req.query.id) {
+      query.UserId = req.query.id;
+    }
+    db.Post.findAll({
+      where: query,
+      include: [db.User]
+    }).then(function(dbPosts) {
       res.json(dbPosts);
     });
   });
