@@ -2,11 +2,11 @@
 module.exports = function (sequelize, DataTypes) {
 
     var Post = sequelize.define("Post", {
-        postId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
+        // postId: {
+        //     type: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     primaryKey: true
+        // },
 
         title: {
           type: DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
       });
 
     Post.associate = function (models) {
-        Post.belongsTo(models.User, { foreignKey: "userId"});
+        Post.belongsTo(models.User);
     };
     Post.associate = function (models) {
         Post.hasOne(models.Location);
