@@ -7,21 +7,25 @@ module.exports = function (app) {
     res.json(req.user);
   });
 
-  // creates a new user 
-  app.post("/api/signup", function (req, res) {
-    console.log("into signup route")
-    console.log(User)
+  app.post("/api/signup", function(req, res) {
+    console.log('***** USER *****', req.body.firstName);
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       username: req.body.username,
       password: req.body.password
-    }).then(function (dbPosts) {
-      console.log(res.dbPosts);
-      res.json(dbPosts);
     })
+    .then(function(user) {
+      console.log("user", user);
+      res.json(user);
+      // res.redirect(307, "/api/login");
+    })
+    // .catch(function(err) {
+    //   res.status(401).json(err);
+    // });
   });
+  
 
   // Create a new Post
   app.post("/api/posts", function (req, res) {
