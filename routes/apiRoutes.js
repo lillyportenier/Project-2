@@ -10,12 +10,25 @@ module.exports = function(app) {
       query.UserId = req.query.id;
     }
     db.Post.findAll({
-      where: query,
-      include: [db.User]
+      where: query
+      // ,
+      // include: [db.User]
     }).then(function(dbPosts) {
       res.json(dbPosts);
     });
   });
+  
+  app.post("/api/posts", function (req, res) {
+    db.Post.create({
+      title: req.body.title,
+      body: req.body.body,
+      city: req.body.city,
+      state: req.body.state
+    }).then(function (dbPosts) {
+      res.json(dbPosts);
+    });
+  });
+
 
   // Get all Posts
   app.get("/api/posts", function (req, res) {
@@ -42,33 +55,31 @@ module.exports = function(app) {
   });
 
   // searches by post city
-  app.get("/api/city/:city", function (req, res) {
+  app.get("/api/search-city/:city", function (req, res) {
     db.Location.findMany({
       where: {
         city: req.params.location
-      }
-      // ,
-      // include: [db.Post]
+      },
+      include: [db.Post]
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   // searches by post state 
-  app.get("/api/state/:state", function (req, res) {
+  app.get("/api/search-state/:state", function (req, res) {
     db.Location.findMany({
       where: {
         state: req.params.state
-      }
-      // ,
-      // include: [db.Post]
+      },
+      include: [db.Post]
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   // searches by username 
-  app.get("/api/username/:username", function (req, res) {
+  app.get("/api/search-username/:username", function (req, res) {
     console.log(db.Post.title, "post title")
     console.log(db.Post, "post")
 
@@ -114,7 +125,7 @@ app.post("/api/signup", function(req, res) {
     username: req.body.username,
     password: req.body.password
   })
-  .then(function(user) {
+.then(function(user) {                                                                                                                                                  
     console.log("user", user);
     res.json(user);
     // res.redirect(307, "/api/login");
