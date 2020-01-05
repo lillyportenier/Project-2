@@ -16,6 +16,7 @@ $(document).ready(function() {
       city: cityInput.val().trim(),
       state: stateInput.val().trim()
     };
+    console.log("event*****************", blogData)
     updateBlog(blogData.title, blogData.body, blogData.city, blogData.state);
     postTitle.val("");
     postBody.val("");
