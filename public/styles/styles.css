@@ -55,6 +55,15 @@ img {
   height: 1000px;
   width: 1000px;
 }
+#post-list{
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  padding-left: 20px;
+  background-color: rgba(0, 0, 96, 0.406);
+  border: 20px;
+  border-radius: 4px;
+
+}
 /* #post-list {
   overflow: auto;
 } */
