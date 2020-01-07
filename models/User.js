@@ -1,5 +1,3 @@
-
-
 var bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
@@ -40,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
   
 
   User.associate = function(models){
-    User.hasMany(models.Post, { as: "Post_fk" })
+    User.hasMany(models.Post)
   };
 
   User.prototype.validPassword = function (password) {
@@ -57,7 +55,6 @@ module.exports = function (sequelize, DataTypes) {
 
 
 }
-
 
 
 
