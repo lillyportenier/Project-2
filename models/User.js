@@ -1,15 +1,13 @@
-
-
 var bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
   
   var User = sequelize.define("User", {
-    userId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-  },
+  //   userId: {
+  //     type: DataTypes.INTEGER,
+  //     autoIncrement: true,
+  //     primaryKey: true
+  // },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -39,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
   });
   
 
-  User.associate = function(models){
+  User.associate = function(models){//is sequalizeEagerLoadingError due to class methods?
     User.hasMany(models.Post)
   };
 
@@ -57,7 +55,6 @@ module.exports = function (sequelize, DataTypes) {
 
 
 }
-
 
 
 
