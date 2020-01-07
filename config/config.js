@@ -2,23 +2,31 @@ require("dotenv").config();
 module.exports= {
 
   "development": {
-    "username": "root",
-    "password": process.env.LOCAL_PASSWORD,
-    "database": "user_db",
-    "host": "localhost",
+    "username": "gdt2fwua5bbe7ere",
+    "password": "a28qa5uffhds34k4",
+    "database": "	viqi0qrybd1kpbed",
+    "port": 3306,
+    "host": "	i5x1cqhq5xbqtv00.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "logging": false
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "testdb",
-    "host": "localhost",
+    "username": "gdt2fwua5bbe7ere",
+    "password": "a28qa5uffhds34k4",
+    "database": "	viqi0qrybd1kpbed",
+    "port": 3306,
+    "host": "	i5x1cqhq5xbqtv00.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "logging": false
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "username": "gdt2fwua5bbe7ere",
+    "password": "a28qa5uffhds34k4",
+    "database": "	viqi0qrybd1kpbed",
+    "port": 3306,
+    "host": "	i5x1cqhq5xbqtv00.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "logging": false
   }
 }
