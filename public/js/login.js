@@ -29,7 +29,10 @@ $(document).ready(function() {
         username: username,
         password: password
       })
-        .then(function() {
+        .then(function(resp) {
+          console.log("resp",resp)
+          sessionStorage.setItem("UserId",resp.id)
+          //store the user info
           window.location.replace("/blog");
           // If there's an error, log the error
         })

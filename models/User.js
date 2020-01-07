@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
   });
   
 
-  User.associate = function(models){
+  User.associate = function(models){//is sequalizeEagerLoadingError due to class methods?
     User.hasMany(models.Post)
   };
 

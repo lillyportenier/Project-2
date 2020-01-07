@@ -1,7 +1,7 @@
 // Get references to page elements
 
-$(document).ready(function() {
-  
+$(document).ready(function () {
+
   var blogForm = $("#blogger")
   var postTitle = $("#title");
   var postBody = $("#blog");
@@ -9,10 +9,10 @@ $(document).ready(function() {
   var stateInput = $("#state");
   var postBlog = $("#post-list");
   var searchM = $("#searchM");
-  
-  
-  blogForm.on("submit", function(event) {
-event.preventDefault();
+
+
+  blogForm.on("submit", function (event) {
+    event.preventDefault();
     var blogData = {
       title: postTitle.val().trim(),
       body: postBody.val().trim(),
@@ -30,46 +30,48 @@ event.preventDefault();
   function updateBlog(title, body, city, state) {
     $.post("/api/posts", {
       title: title,
+      UserId: sessionStorage.getItem("UserId"),
       body: body,
       city: city,
       state: state
     })
-    .then(function(data) {
-      console.log("created new blog");
-      location.reload();
-    })
+      .then(function (data) {
+        console.log("created new blog");
+        location.reload();
+      })
     // .catch(handleBlogErr);
   }
 
   function searchCity(city) {
     var sCity = $("#searchCity");
 
-    searchM.on("submit", function(event) {
+    searchM.on("submit", function (event) {
       event.preventDefault();
       var searchCityData = {
         city: sCity.val().trim()
-      }
-    })
-    $.get("/api/posts" + "/?city=" + city, function(data) {
-      console.log("City Search", data);
-      searchCityData = data;
-      if (!cityData || !cityData.length) {
-        displayEmpty(city);
-      } else {
-        initializeRows();
-      }
+      };
+      
+      $.get("/api/posts" + "/?city=" + city, function (data) {
+        console.log("City Search", data);
+        searchCityData = data;
+        if (!cityData || !cityData.length) {
+          displayEmpty(city);
+        } else {
+          initializeRows();
+        }
+      });
     });
   }
   function searchState(state) {
     var sState = $("#searchState");
 
-    searchM.on("submit", function(event) {
+    searchM.on("submit", function (event) {
       event.preventDefault();
       var searchStateData = {
         state: sState.val().trim()
       }
     })
-    $.get("/api/posts" + "/?state=" + state, function(data) {
+    $.get("/api/posts" + "/?state=" + state, function (data) {
       console.log("State Search", data);
       stateData = data;
       if (!stateData || !stateData.length) {
@@ -82,13 +84,13 @@ event.preventDefault();
   function searchUserName(username) {
     var sBlogger = $("#searchBlogger");
 
-    searchM.on("submit", function(event) {
+    searchM.on("submit", function (event) {
       event.preventDefault();
       var searchBloggerData = {
         username: sBlogger.val().trim()
       }
     })
-    $.get("/api/users" + "/?username=" + username, function(data) {
+    $.get("/api/users" + "/?username=" + username, function (data) {
       console.log("City Search", data);
       searchBloggerData = data;
       if (!searchBloggerData || !searchBloggerData.length) {
@@ -101,13 +103,13 @@ event.preventDefault();
   function searchTitle(title) {
     var sTitle = $("#searchTitle");
 
-    searchM.on("submit", function(event) {
+    searchM.on("submit", function (event) {
       event.preventDefault();
       var searchTitleData = {
         title: sTitle.val().trim()
       }
     })
-    $.get("/api/posts" + "/?title=" + title, function(data) {
+    $.get("/api/posts" + "/?title=" + title, function (data) {
       console.log("City Search", data);
       searchTitleData = data;
       if (!searchTitleData || !searchTitleData.length) {
@@ -123,7 +125,7 @@ event.preventDefault();
     for (var i = 0; i < posts.length; i++) {
       blogToAdd.push(updateBlog(posts[i]));
     }
-    
+
   }
   function initializeUserRows() {
     postBlog.empty();
@@ -131,7 +133,7 @@ event.preventDefault();
     for (var i = 0; i < users.length; i++) {
       blogToAdd.push(updateBlog(users[i]));
     }
-    
+
   }
   // function handleBlogErr(err) {
   //   $("#alert .msg").text(err.responseJSON);
@@ -162,7 +164,7 @@ event.preventDefault();
   //     });
   //   }
   // };
-  
+
   // refreshPost gets new Post from the db and repopulates the list
   // var refreshPost = function() {
   //   API.getPost().then(function(data) {
@@ -170,72 +172,72 @@ event.preventDefault();
   //       var $a = $("<a>")
   //       .text(Post.title)
   //       .attr("href", "/Post/" + Post.id);
-        
+
   //       var $li = $("<li>")
   //       .attr({
   //         class: "list-group",
   //         "data-id": Post.id
   //       })
   //       .append($a);
-        
-        // var $button = $("<button>")
-        //   .addClass("btn btn-danger float-right delete")
-        //   .text("ｘ");
-        
-        // $li.append($button);
-        
+
+  // var $button = $("<button>")
+  //   .addClass("btn btn-danger float-right delete")
+  //   .text("ｘ");
+
+  // $li.append($button);
+
   //       return $li;
   //     });
-      
+
   //     $postBlog.append($Post);
   //     $postBlog.empty();
   //   });
   // };
-  
+
   // handleFormSubmit is called whenever we submit a new Post
   // Save the new Post to the db and refresh the list
   // var handleFormSubmit = function(event) {
   //   event.preventDefault();
-    
+
   //   var Post = {
   //     title: postTitle.val().trim(),
   //     body: postBody.val().trim()
   //   };
-    
+
   //   if (!(Post.title && Post.body)) {
   //     alert("You must enter a Post title and Blog!");
   //     return;
   //   }
-    
+
   //   API.savePost(Post).then(function() {
   //     refreshPost();
   //   });
-    
+
   //   postTitle.val("");
   //   postBody.val("");
   // };
-  
+
   // handleDeleteBtnClick is called when an Post's delete button is clicked
   // Remove the Post from the db and refresh the list
   // var handleDeleteBtnClick = function() {
-    //   var idToDelete = $(this)
-    //     .parent()
-    //     .attr("data-id");
-    
-    //   API.deletePost(idToDelete).then(function() {
-      //     refreshPost();
-      //   });
-      // };
-      
-      // // Add event listeners to the submit and delete buttons
-      // $submitBtn.on("click", handleFormSubmit);
-      // $postBlog.on("click", ".delete", handleDeleteBtnClick);
-      
-      
-    });
-      $(document).ready(function(){
+  //   var idToDelete = $(this)
+  //     .parent()
+  //     .attr("data-id");
+
+  //   API.deletePost(idToDelete).then(function() {
+  //     refreshPost();
+  //   });
+  // };
+
+  // // Add event listeners to the submit and delete buttons
+  // $submitBtn.on("click", handleFormSubmit);
+  // $postBlog.on("click", ".delete", handleDeleteBtnClick);
+
+
+});
+$(document).ready(function () {
   $('.modal').modal();
 });
-$(document).ready(function(){
+$(document).ready(function () {
   $('.fixed-action-btn').floatingActionButton();
 });

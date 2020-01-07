@@ -14,7 +14,11 @@ module.exports = function(app) {
     
   });
   app.get("/blog", function(req, res) {
-    db.Post.findAll({}).then(function(dbPosts) {
+    db.Post.findAll({
+      // where: {},
+      // include: [db.User]
+    }).then(function(dbPosts) {
+      console.log("posts",dbPosts)
       res.render("blog", {
         msg: "Welcome! This is the Alien Blog",
         Post: dbPosts
