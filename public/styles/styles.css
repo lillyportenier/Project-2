@@ -1,14 +1,19 @@
 body {
   font-family: fantasy;
+  font-family: 'Courier New', Courier, monospace;
   background-color: rgb(9, 15, 15);
-  color: lightgoldenrodyellow;
+  color: white;
   text-shadow: 2px 2px 5px black;
-  box-shadow: 2px 2px 5px red;
+  /* box-shadow: 2px 2px 5px red; */
   background-image: url("/images/kidssky.jpg");
+}
+.large material-icons{
+  font-size: 15px;
 }
 #bFlag {
   text-shadow: 2px 2px 5px green;
   color:whitesmoke;
+  font-size: 15px;
 }
 .list-group {
   line-height: 2.5;
@@ -18,13 +23,13 @@ body {
 #submit1, 
 #submit2, 
 #submit3 {
-  box-shadow: 2px 2px 5px red;
+  /* box-shadow: 2px 2px 5px red; */
   border-radius: 25px;
-  background-color: darkgreen;
-  color: whitesmoke;
+  background-color: green;
+  color: white;
 }
-.container {
-  position: relative;
+#model1 .modal-content{
+  padding: 10px;
 }
 .modal-trigger {
   background-color: lightgreen;
@@ -33,16 +38,25 @@ body {
 }
 h1, h3 {
   text-align: center;
-  color: whitesmoke;
-  border-radius: 25px;
-  background-color: green;
-  color: lightgoldenrodyellow;
-  text-shadow: 2px 2px 5px black;
-  box-shadow: 2px 2px 5px lightgoldenrodyellow;
+  color: green;
+  font-size: 75px;
+
+  /* border-radius: 25px; */
+  background-color: black;
+  /* color: lightgoldenrodyellow; */
+  text-shadow: 2px 2px 2px rgb(52, 205, 52);
+  /* box-shadow: 2px 2px 5px white; */
+  border-color: white;
+
+  /* box-shadow: 2px 2px 5px lightgoldenrodyellow; */
 }
 #modal1, #modal2, #modal3 {
-  border-radius: 25px;
+  border-radius: 10px;
   background-color: darkslategrey;
+}
+#modal1{
+  padding: 15px;
+  padding-top: 0px;
 }
 #username, #password {
   color: white;
@@ -57,13 +71,23 @@ img {
 }
 #post-list{
   font-family: 'Courier New', Courier, monospace;
-  padding: 10px;
-  padding-left: 20px;
-  background-color: rgba(0, 0, 96, 0.406);
-  border: 20px;
+  margin: 10px;
+  padding-top: 10px;
+  /* padding-left: 20px; */
+  background-color: rgba(0, 0, 0, 0.596);
+  border-bottom: black 20px;
   border-radius: 4px;
-
 }
+#post-list li{
+  border: white 20px;
+  margin: 20px;
+}
+hr {
+  /* width: 100%; */
+  padding: 0;
+  margin: 10px;
+}
+
 /* #post-list {
   overflow: auto;
 } */
