@@ -3,7 +3,7 @@ module.exports= {
 
   "development": {
     "username": "gdt2fwua5bbe7ere",
-    "password": "a28qa5uffhds34k4",
+    "password": LOCAL_PASSWORD=a28qa5uffhds34k4,
     "database": "	viqi0qrybd1kpbed",
     "port": 3306,
     "host": "	i5x1cqhq5xbqtv00.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
