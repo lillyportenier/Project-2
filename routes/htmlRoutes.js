@@ -16,7 +16,7 @@ module.exports = function(app) {
   app.get("/blog", function(req, res) {
     db.Post.findAll({
       // where: {},
-      // include: [db.User]
+      include: [db.User]
     }).then(function(dbPosts) {
       console.log("posts",dbPosts)
       res.render("blog", {
