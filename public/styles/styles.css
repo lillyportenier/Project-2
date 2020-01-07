@@ -17,7 +17,11 @@ body {
 #submit4, 
 #submit1, 
 #submit2, 
-#submit3 {
+#submit3,
+#submit5,
+#submit6,
+#submit7
+ {
   box-shadow: 2px 2px 5px red;
   border-radius: 25px;
   background-color: darkgreen;
@@ -55,6 +59,6 @@ img {
   height: 1000px;
   width: 1000px;
 }
-/* #post-list {
+#post-list {
   overflow: auto;
-} */
+}

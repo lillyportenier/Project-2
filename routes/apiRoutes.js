@@ -5,23 +5,25 @@
   
   module.exports = function(app) {
     // Get all Posts
-    app.get("/api/posts", function(req, res) {
+    app.get("/api/posts", function(req, res) {//what is this doing?
       var query = {};
       if (req.query.id) {
         query.UserId = req.query.id;
       }
       db.Post.findAll({
         where: query
-        // ,
-        // include: [db.User]
+        ,
+        include: [db.User]
       }).then(function(dbPosts) {
         res.json(dbPosts);
       });
     });
     
     app.post("/api/posts", function (req, res) {
+      console.log("userId", req.body.UserId)
       db.Post.create({
         title: req.body.title,
+        UserId: req.body.UserId,
         body: req.body.body,
         city: req.body.city,
         state: req.body.state
