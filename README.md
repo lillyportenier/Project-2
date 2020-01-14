@@ -3,7 +3,7 @@
 <p>Alien Awarness is a website designed for curious minds with eyes in the sky, it allows users to create an account and post about any and all alien sightings they have have witnessed. Similar to other social media accounts the user creates a unique username and password that allows them full acccess to the blog page. Other users will be able to see who creates a sighting post, where it happened, and a location of the event. </p>
 
 <h2>The Site</h2>
-<p>To checkuot the webiste visit the heroku hosted sight below, and click the sing up button in the bottom left corner.
+<p>To checkout t the webiste visit the heroku hosted site below and click the sing up button in the bottom left corner.
 https://morning-wildwood-42280.herokuapp.com/</p>
 
 
